@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レスポンシブヘッダー修正版</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ヘッダー全体のスタイル */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      height: 64px;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-family: 'Charis SIL', serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #CA8B97;
+    }
+
+    /* ナビゲーションメニュー（パソコン版） */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-family: 'Sawarabi Mincho', serif;
+      font-size: 18px;
+      color: #CA8B97;
+      text-decoration: none;
+    }
+
+    .nav-link:hover {
+      color: #A05F73;
+    }
+
+    /* 「お問合せ」ボタンのデザイン */
+    .contact-btn {
+      background-color: #EFE9E9; /* 背景色 */
+      color: #CA8B97;
+      border-radius: 5px; /* 角丸を5pxに調整 */
+      padding: 8px 24px;
+      font-size: 18px;
+      font-family: 'Sawarabi Mincho', serif;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background-color: #D6CFCF; /* ホバー時の背景色 */
+    }
+
+    /* ハンバーガーメニュー（三本線） */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #CA8B97;
+    }
+
+    /* モバイルメニュー（スマホ用） */
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 64px;
+      right: 0;
+      width: 100%;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mobile-menu a {
+      font-family: 'Sawarabi Mincho', serif;
+      font-size: 18px;
+      color: #CA8B97;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      color: #A05F73;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* パソコン版のナビゲーションを非表示 */
+      }
+
+      .hamburger {
+        display: flex; /* ハンバーガーメニューを表示 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <div class="logo">LI-LI STUDIO</div>
+    <!-- ハンバーガーメニュー（スマホ版） -->
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!-- ナビゲーション（パソコン版） -->
+    <nav class="nav-links">
+      <a href="#about" class="nav-link">サービス概要</a>
+      <a href="#works" class="nav-link">制作実績</a>
+      <a href="#contact" class="contact-btn">お問合せ</a>
+    </nav>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">サービス概要</a>
+    <a href="#works">制作実績</a>
+    <a href="#contact">お問合せ</a>
+  </div>
+
+  <!-- 各セクション -->
+  <section id="about" style="padding: 100px 20px; margin-top: 64px;">
+    <h2>サービス概要</h2>
+    <p>こちらがサービス概要のセクションです。</p>
+  </section>
+  <section id="works" style="padding: 100px 20px;">
+    <h2>制作実績</h2>
+    <p>こちらが制作実績のセクションです。</p>
+  </section>
+  <section id="contact" style="padding: 100px 20px;">
+    <h2>お問い合わせ</h2>
+    <p>こちらがお問い合わせのセクションです。</p>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      // メニューの表示/非表示を切り替える
+      if (mobileMenu.style.display === 'flex') {
+        mobileMenu.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'flex';
+      }
+    });
+  </script>
+</body>
+</html>
